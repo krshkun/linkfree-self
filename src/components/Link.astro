@@ -12,7 +12,9 @@ const IconComponent = FaIcons[icon as keyof typeof FaIcons] ?? SiIcons[icon as k
 
 <a
   class="flex font-sans justify-between items-center rounded-md bg-slate-800 hover:bg-slate-700 py-2 px-4 text-gray-300 hover:text-gray-200 transition-colors duration-300"
-  href={`/links/${encodeURIComponent(url)}`}
+  href={`https://linkfree.eddiehub.io/api/users/${
+      import.meta.env.LINKFREE_USERNAME
+    }/links/${encodeURIComponent(url)}`}
   target="_blank"
   rel="noopener noreferrer"
 >
