@@ -1,31 +1,24 @@
-//@ts-check
-import { config as env } from 'dotenv';
-import { writeFileSync } from 'fs';
-import { join } from 'path';
-import { createCanvas, loadImage } from 'canvas'
-import fetch from 'node-fetch'
+import { config as env } from "dotenv";
+import { writeFileSync } from "fs";
+import { join } from "path";
+import { createCanvas, loadImage } from "canvas";
+import fetch from "node-fetch";
 
 async function main() {
-  const { parsed } = env()
+  const { parsed } = env();
+  const username = parsed.LINKFREE_USERNAME;
 
-  /**
-   * @type {import('../src/types/user').UserProfile}
-   */
-  // @ts-ignore
-  const user = await (await fetch(`https://linkfree.eddiehub.io/api/users/${parsed.LINKFREE_USERNAME}`)).json()
+  const file = Buffer.from(
+    await (await fetch(`https://github.com/${username}.png`)).arrayBuffer()
+  );
 
-  const file = Buffer.from(await (await fetch(user.avatar)).arrayBuffer())
+  writeFileSync(join(process.cwd(), "public", "avatar.png"), file);
 
-  writeFileSync(join(process.cwd(), 'public', 'avatar.png'), file)
-
-  const { name, bio, avatar } = await (
-    await fetch(
-      `https://linkfree.eddiehub.io/api/users/${
-      // @ts-ignore
-      parsed.LINKFREE_USERNAME
-      }`
-    )
+  const profile = await (
+    await fetch(`https://linkfree.eddiehub.io/api/users/${username}`)
   ).json();
+
+  const { name, bio } = profile;
 
   const font =
     'Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji, Android Emoji, EmojiSymbols, OpenMoji, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif';
@@ -62,19 +55,11 @@ async function main() {
     canvas.width
   );
 
-
   const image = await loadImage(file);
 
   ctx.save();
   ctx.beginPath();
-  ctx.arc(
-    canvas.width / 2,
-    canvas.height / 3,
-    300 / 2,
-    0,
-    Math.PI * 2,
-    true
-  );
+  ctx.arc(canvas.width / 2, canvas.height / 3, 300 / 2, 0, Math.PI * 2, true);
   ctx.closePath();
   ctx.clip();
   ctx.drawImage(
@@ -88,7 +73,7 @@ async function main() {
 
   const banner = canvas.toBuffer("image/png");
 
-  writeFileSync(join(process.cwd(), 'public', 'og:banner.png'), banner)
+  writeFileSync(join(process.cwd(), "public", "og:banner.png"), banner);
 }
 
-main()
+main();
