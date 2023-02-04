@@ -4,18 +4,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "predev": "yarn asset-generate",
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "yarn asset-generate",
     "build": "astro build",
     "preview": "astro preview",
-    "prelint": "yarn asset-generate",
     "lint": "astro check",
-    "preastro": "yarn asset-generate",
-    "astro": "astro",
-    "prepare": "ncp .env.example .env && yarn asset-generate",
-    "asset-generate": "node scripts/prebuild.js"
+    "prepare": "ncp .env.example .env"
   },
   "dependencies": {
     "@astrojs/react": "^1.2.2",
@@ -26,7 +20,7 @@
     "astro": "^2.0.6",
     "canvas": "^2.11.0",
     "node-fetch": "^3.3.0",
-    "postcss": "^8.4.21",
+    "postcss": "^8.0.9",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.7.1",
