@@ -7,14 +7,8 @@ import fetch from 'node-fetch'
 
 async function main() {
   const { parsed } = env()
-
-  /**
-   * @type {import('../src/types/user').UserProfile}
-   */
   // @ts-ignore
-  const user = await (await fetch(`https://linkfree.eddiehub.io/api/users/${parsed.LINKFREE_USERNAME}`)).json()
-
-  const file = Buffer.from(await (await fetch(user.avatar)).arrayBuffer())
+  const file = Buffer.from(await (await fetch(`https://github.com/${parsed.LINKFREE_USERNAME}.png`)).arrayBuffer())
 
   writeFileSync(join(process.cwd(), 'public', 'avatar.png'), file)
 
