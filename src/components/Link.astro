@@ -22,7 +22,5 @@ const IconComponent = FaIcons[icon as keyof typeof FaIcons] ?? SiIcons[icon as k
     <IconComponent />
   </span>
   <span class="md:text-lg">{name}</span>
-  <span class="!text-gray-400 text-sm" id={`link-${encodeURIComponent(name)}`}
-    >{clicks ?? 0}</span
-  >
+  <span class="!text-gray-400 text-sm">{clicks ?? 0}</span>
 </a>
