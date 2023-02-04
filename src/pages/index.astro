@@ -7,7 +7,7 @@ const profile = (await fetch(
   `https://linkfree.eddiehub.io/api/users/${import.meta.env.LINKFREE_USERNAME}`
 ).then((res) => res.json())) as UserProfile;
 
-const { name, bio, avatar, links } = profile;
+const { name, bio, links } = profile;
 ---
 
 <Layout title={`${name} • ${bio}`}>
