@@ -4,18 +4,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "predev": "yarn asset-generate",
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "yarn asset-generate",
     "build": "astro build",
     "preview": "astro preview",
-    "prelint": "yarn asset-generate",
     "lint": "astro check",
-    "preastro": "yarn asset-generate",
-    "astro": "astro",
-    "prepare": "ncp .env.example .env && yarn asset-generate",
-    "asset-generate": "node scripts/prebuild.js"
+    "prepare": "ncp .env.example .env"
   },
   "dependencies": {
     "@astrojs/netlify": "^1.3.0",
