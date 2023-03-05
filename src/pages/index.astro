@@ -7,7 +7,7 @@ const profile = (await fetch(
   `https://linkfree.eddiehub.io/api/users/${import.meta.env.LINKFREE_USERNAME}`
 ).then((res) => res.json())) as UserProfile;
 
-const { name, bio, links } = profile;
+const { name, bio, links, username } = profile;
 ---
 
 <Layout title={`${name} • ${bio}`}>
@@ -18,7 +18,7 @@ const { name, bio, links } = profile;
     <div class="flex flex-col items-center justify-center aspect-square w-32 h-32">
       <img
         class="aspect-square rounded-full h-full w-full"
-        src={`https://github.com/${import.meta.env.LINKFREE_USERNAME}.png`}
+        src={`https://github.com/${username}.png`}
         alt={name}
         width={128}
         height={128}
@@ -36,5 +36,8 @@ const { name, bio, links } = profile;
       ))
     }
   </div>
+  <script>
+    (async () => {await fetch('https://linkfree.eddiehub.io/krshkun')})()
+  </script>
 </div>
 </Layout>

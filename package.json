@@ -12,9 +12,9 @@
     "prepare": "ncp .env.example .env"
   },
   "dependencies": {
-    "@astrojs/netlify": "^1.3.0",
     "@astrojs/tailwind": "^2.1.3",
-    "astro": "^1.9.0",
+    "@astrojs/vercel": "^3.1.4",
+    "astro": "^2.0.17",
     "canvas": "^2.11.0",
     "node-fetch": "^3.3.0",
     "postcss": "^8.4.21",
