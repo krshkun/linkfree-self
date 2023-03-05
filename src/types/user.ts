@@ -10,7 +10,6 @@ export interface UserProfile {
     name: string;
     url: string;
     icon: string;
-    clicks: number;
     color?: string;
   }>;
   testimonials?: string[];

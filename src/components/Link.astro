@@ -3,7 +3,7 @@ import type { UserProfile } from "types/user";
 
 export type Props = UserProfile["links"][0];
 
-const { name, url, clicks } = Astro.props;
+const { name, url } = Astro.props;
 ---
 
 <a
@@ -15,5 +15,4 @@ const { name, url, clicks } = Astro.props;
   rel="noopener noreferrer"
 >
   <span class="md:text-lg">{name}</span>
-  <span class="!text-gray-400 text-sm">{clicks ?? 0}</span>
 </a>
